@@ -2,6 +2,11 @@ package hrprogram;
 
 public class User {
     
+    public User(String name, int employeeNum){
+        
+    }
+    
+    
     //login info
     String username;
     String password;
@@ -12,12 +17,5 @@ public class User {
     String employeeNum;
     String phone;
     
-    void login(){
-        
-    }
-    
-    void logout(){
-        
-    }
 
 }
