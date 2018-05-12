@@ -7,20 +7,9 @@ public class Approval extends User{
         // TODO Auto-generated constructor stub
     }
 
-    void sendOffer(){
+    void setIsApproved(Course course){
         
-    }
-    
-    void approveHire(){
-        
-        Casual casual = null;
-        Course course = null;
-        
-        //to be supplied by user
-        
-        ApproveHire hire = new ApproveHire(casual, course);
-        
-        hire.addCasual();
+        //set course boolean IsApproved to true
 
     }
     

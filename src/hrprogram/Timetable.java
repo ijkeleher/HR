@@ -1,10 +1,10 @@
 package hrprogram;
 
-public class Schedule {
+public class Timetable {
     Course course;
     CourseCoordinator courseCoordinator;
     
-    public Schedule(Course course, CourseCoordinator courseCoordinator){
+    public Timetable(Course course, CourseCoordinator courseCoordinator){
     
     }
     

@@ -53,7 +53,7 @@ public class Driver {
 
             Course SEFCOSC2537 = new Course("SEFCOSC253");
             CourseCoordinator Andrew = new CourseCoordinator("Andrew", 4545416);
-            Schedule SEFschedule = new Schedule(SEFCOSC2537, Andrew);
+            Timetable SEFschedule = new Timetable(SEFCOSC2537, Andrew);
             
             
             //load();
