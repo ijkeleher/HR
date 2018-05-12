@@ -251,27 +251,25 @@ public class Driver {
         }       
 
     
-   void createSchedule(){
+   void modifyTimetable(Timetable timetable){
+       
+       //use the createClass, removeClass and listClass here to make timetable changes
+       //for each course
+
         
     }
-    
-  void modifySchedule(){
-        
-    }
-  
-  void deleteSchedule(){
-      
-  }
+   
   
   void createTimeSheet(){
       
-  }
-  
-  void modifyTimesheet(){
       
   }
   
-  void deleteTimeSheet(){
+  void modifyTimesheet(TimeSheet timesheet){
+      
+  }
+  
+  void deleteTimeSheet(TimeSheet timesheet){
       
   }
   
@@ -279,29 +277,14 @@ public class Driver {
       
   }
   
-  void modifyReport(){
+  void modifyReport(Report Report){
       
   }
   
-  void deleteReport(){
+  void deleteReport(Report report){
       
   }
-  
-  void createJob(){
-      
-  }
-  
-  void deleteJob(){
-      
-  }
-  
-  void applyJob(){
-      
-  }
-  
-  void searchJob(){
-      
-  }
+
   
   
 }
