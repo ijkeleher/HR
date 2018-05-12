@@ -8,9 +8,7 @@ public class Approval extends User{
     }
 
     void setIsApproved(Course course){
-        
-        //set course boolean IsApproved to true
-
-    }
+       course.setIsApproved();
     
+}
 }
