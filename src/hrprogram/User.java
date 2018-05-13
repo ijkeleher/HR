@@ -1,21 +1,29 @@
 package hrprogram;
 
 public class User {
-    
-    public User(String name, int employeeNum){
-        
+
+    // login info
+    private String username;
+    private String password;
+
+    // personal info
+    private String email;
+    private String name;
+    private String employeeNum;
+    private  int phone;
+
+    public User(String employeeNum, String name) {
+
+    }
+
+    public String getEmployeeNum() {
+        return employeeNum;
+
     }
     
-    
-    //login info
-    String username;
-    String password;
-    
-    //personal info
-    String email;
-    String name;
-    String employeeNum;
-    String phone;
-    
+    public String getName() {
+        return name;
+
+    }
 
 }

@@ -1,27 +1,27 @@
 package hrprogram;
 
 public class TimeSheet {
-    Class classID;
+    Tutorial tutorialID;
     int hrs;
     
-    public TimeSheet(Class classID){
+    public TimeSheet(Tutorial classID){
      
     }
     
     public void displayTimesheet(){
     //print class details
-    System.out.println(classID.classID+"\n");
-    System.out.println(classID.course+"\n");
-    System.out.println(classID.startTime+"\n");
-    System.out.println(classID.endTime+"\n");
-    System.out.println(classID.casual+"\n");
+    System.out.println(tutorialID.tutorialID+"\n");
+    System.out.println(tutorialID.course+"\n");
+    System.out.println(tutorialID.startTime+"\n");
+    System.out.println(tutorialID.endTime+"\n");
+    System.out.println(tutorialID.casual+"\n");
     
     //hourly rate of the casual
-    System.out.print(classID.casual.hrly_rate);
+    System.out.print(tutorialID.casual.hrly_rate);
     //number of hours worked
     System.out.print(hrs);
     //display total pay
-    System.out.print(hrs*classID.casual.hrly_rate);
+    System.out.print(hrs*tutorialID.casual.hrly_rate);
     }
 
 }

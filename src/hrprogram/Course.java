@@ -1,39 +1,80 @@
 package hrprogram;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Course {
 
-   String courseID;
-   CourseCoordinator courseCoordinator;
-   HashMap<String, Casual> casualsMap;
-   public Timetable timetable;
-   boolean isApproved = false;
-   
-   
-   static Scanner console = new Scanner(System.in);
-   
-   public Course (String courseID){
-       
-   }
-   
+    String courseID;
+    CourseCoordinator courseCoordinator;
+    HashMap<String, Casual> casualsMap;
+    public Timetable timetable;
+    boolean isApproved = false;
+
+    static Scanner console = new Scanner(System.in);
+
+    public Course(String courseID) {
+        this.courseID = courseID;
+    }
+
    void importListOfCasuals(){
-       //import list of casuals from text database
-   }
-   
-   
-   public void setIsApproved(){
-       isApproved = true;
-   }
-   
-   public void setNotApproved(){
-       isApproved = false;
-   }
-   
-   
+       
+       try{//finding the file and setting up scanner to read it
+           String filename = "casuals.txt";
+           Scanner targetFile = new Scanner(new File(filename));
+           targetFile.useDelimiter("#");
+           System.out.println("Casuals file found! Using backup file for loading data!");
+           
+           
+//           String email;
+//           String name;
+//           String employeeNum;
+//           String phone;
+           //int hrly_rate
+           
+           try {
+               // if file has no content throw "file empty" exception
+               if (targetFile.hasNextLine() == false) {
+                   throw new Exception("File is empty!");
+                   
+               }else{//grab info from file if available
+                   
+                   while (targetFile.hasNextLine()) {
+                       String employeeNum = targetFile.next();
+                       String name = targetFile.next();
+                       String email = targetFile.next();
+                       int phone = targetFile.nextInt();
+                       int hrly_rate = targetFile.nextInt();
 
-       }
-   
-   
+                       Casual c = new Casual(employeeNum, name, email, phone, hrly_rate);
+                           casualsMap.put(c.getEmployeeNum(), c);
+                       }
+                   }
+           //print file empty message if file is empty
+           } catch (Exception e) {
+               System.out.println(e.getMessage());
+           } finally {
+               targetFile.close();
+           }
+       }catch(
 
+    FileNotFoundException e)
+    {
+        System.out.println("File not found! No Sale data was loaded");
+
+    }
+       
+       
+   }//end of method
+
+    public void setIsApproved() {
+        isApproved = true;
+    }
+
+    public void setNotApproved() {
+        isApproved = false;
+    }
+
+}
