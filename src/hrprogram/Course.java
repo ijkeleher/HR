@@ -60,7 +60,18 @@ public class Course {
 
     }// end of method
 
-
+public void listCasuals(){
+        
+        if (casualsMap.isEmpty()){
+            System.out.println("No Casuals assigned for teaching in this course!\n");
+        }
+        // for each key in hash map retrieve the casual object
+        //and it's details
+        for (Object key : casualsMap.keySet()) {
+            Casual c = (Casual) casualsMap.get(key);
+            System.out.println(c.getName()+" - "+c.getEmployeeNum()+"\n");
+        }
+    }
 
     public void setIsApproved() {
         isApproved = true;
