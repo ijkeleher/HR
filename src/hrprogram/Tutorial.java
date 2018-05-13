@@ -8,10 +8,11 @@ public class Tutorial {
     public String startTime;
     public String endTime;
     public Casual casual;
+    public int duration;
     
 
     public Tutorial(String tutorialID, String courseID, String date, 
-            String startTime, String endTime, Casual casual){
+            String startTime, String endTime, Casual casual, int duration){
         
         this.date = date;
         this.startTime = startTime;
@@ -19,6 +20,7 @@ public class Tutorial {
         this.casual = casual;
         this.courseID = courseID;
         this.tutorialID = tutorialID;
+        this.duration = duration;
   
     }
     

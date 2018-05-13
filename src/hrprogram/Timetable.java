@@ -36,11 +36,13 @@ public class Timetable {
                         String startTime = targetFile.next();
                         String endTime = targetFile.next();
                         String casualID = targetFile.next();
+                        int duration = targetFile.nextInt();
 
                         if (course.casualsMap.containsKey(casualID)) {
                             Casual assignedCasual = course.casualsMap.get(casualID);
 
-                            Tutorial t = new Tutorial(tutorialID, courseID, date, startTime, endTime, assignedCasual);
+                            Tutorial t = new Tutorial(tutorialID, courseID, date, 
+                                    startTime, endTime, assignedCasual, duration);
 
                             tutorialsMap.put(t.getTutorialID(), t);
                         }
@@ -64,14 +66,15 @@ public class Timetable {
     }// end of method
 
     void createTutorial(String tutorialID, String courseID, String date, String startTime, String endTime,
-            String casualID) {
+            String casualID, int duration) {
 
         // search for casual in database
         if (course.casualsMap.containsKey(casualID)) {
             Casual assignedCasual = course.casualsMap.get(casualID);
 
             // create new tutorial object
-            Tutorial t = new Tutorial(tutorialID, courseID, date, startTime, endTime, assignedCasual);
+            Tutorial t = new Tutorial(tutorialID, courseID, date, 
+                    startTime, endTime, assignedCasual, duration);
 
             // add new tutorial object to tutorials hashmap
             tutorialsMap.put(t.getTutorialID(), t);

@@ -52,7 +52,7 @@ public class Driver {
             //course, coordinator and schedule pre-created for testing purposes
 
             Course SEFCOSC2537 = new Course("SEFCOSC253");
-            CourseCoordinator Andrew = new CourseCoordinator("Andrew", 4545416);
+            CourseCoordinator Andrew = new CourseCoordinator("Andrew", "e4545416");
             Timetable SEFschedule = new Timetable(SEFCOSC2537, Andrew);
             
             
@@ -256,18 +256,22 @@ public class Driver {
        //use the createClass, removeClass and listClass here to make timetable changes
        //for each course
 
+       //each course has a single timetable object
+       //the timetable object contains a hashmap called tutorialsMap containing
+       //all of the tutorials for that course
+       
+       //the course has a hashmap containing all the imported casual objects
         
     }
    
   
   void createTimeSheet(){
       
+      //timesheet constructor takes a tutorial object as input
+      
       
   }
   
-  void modifyTimesheet(TimeSheet timesheet){
-      
-  }
   
   void deleteTimeSheet(TimeSheet timesheet){
       
@@ -275,11 +279,10 @@ public class Driver {
   
   void createReport(){
       
-  }
-  
-  void modifyReport(Report Report){
+      //report constructor takes a course object as input
       
   }
+  
   
   void deleteReport(Report report){
       
