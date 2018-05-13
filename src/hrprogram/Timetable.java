@@ -13,6 +13,10 @@ public class Timetable {
     
     }
     
+    void importClasses(){
+        //import classes and populated classesMap
+    }
+    
     void createClass(String date, String startTime, String endTime, Casual casual,
             Course course, String classID){
         
@@ -32,6 +36,8 @@ public class Timetable {
     }
     
     void listClasses(){
+        
+        //list classes in classesMap
         
     }
 

@@ -16,7 +16,8 @@ public class Class {
   
     }
     
-    public void setCasual() {
+    //check in casualsMap contained in Course object
+    public void setCasual(Course course) {
         
         if (course.casualsMap.containsKey(casual)) {
             System.out.println("employee " + casual.employeeNum + " is already"
