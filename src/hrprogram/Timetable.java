@@ -1,50 +1,109 @@
 package hrprogram;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Timetable {
     Course course;
     CourseCoordinator courseCoordinator;
-    HashMap<String, Casual> classessMap;
+    HashMap<String, Tutorial> tutorialsMap;
 
-    
-    
-    public Timetable(Course course, CourseCoordinator courseCoordinator){
-    
-    }
-    
-    void importClasses(){
-        //import classes and populated classesMap
-    }
-    
-    void createClass(String date, String startTime, String endTime, Casual casual,
-            Course course, String classID){
-        
-        //create a class
-        
-        //insert into classes map
-        
-        //set course to notApproved
-        course.setNotApproved();
-    }
-    
-    void removeClass(String ClassID){
-        
-      //remove a class from classes map
-        
-        course.setNotApproved();
-    }
-    
-    void listClasses(){
-        
-        //list classes in classesMap
-        
+    public Timetable(Course course, CourseCoordinator courseCoordinator) {
+
     }
 
+    void importListOfTutorials() {
 
-  
-   
+        try {// finding the file and setting up scanner to read it
+            String filename = "tutorials.txt";
+            Scanner targetFile = new Scanner(new File(filename));
+            targetFile.useDelimiter("#");
+            System.out.println("Tutorials file found! Using backup file for loading data!");
+
+            try {
+                // if file has no content throw "file empty" exception
+                if (targetFile.hasNextLine() == false) {
+                    throw new Exception("File is empty!");
+
+                } else {// grab info from file if available
+
+                    while (targetFile.hasNextLine()) {
+                        String tutorialID = targetFile.next();
+                        String courseID = targetFile.next();
+                        String date = targetFile.next();
+                        String startTime = targetFile.next();
+                        String endTime = targetFile.next();
+                        String casualID = targetFile.next();
+
+                        if (course.casualsMap.containsKey(casualID)) {
+                            Casual assignedCasual = course.casualsMap.get(casualID);
+
+                            Tutorial t = new Tutorial(tutorialID, courseID, date, startTime, endTime, assignedCasual);
+
+                            tutorialsMap.put(t.getTutorialID(), t);
+                        }
+                    } // end of while loop
+
+                } // end of if else
+                  // exception to print print file empty message if file is
+                  // empty
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            } finally {
+                targetFile.close();
+            }
+        } catch (
+
+        FileNotFoundException e) {
+            System.out.println("Tutorials file not found! No tutorials data was loaded");
 
         }
-    
 
+    }// end of method
+
+    void createTutorial(String tutorialID, String courseID, String date, String startTime, String endTime,
+            String casualID) {
+
+        // search for casual in database
+        if (course.casualsMap.containsKey(casualID)) {
+            Casual assignedCasual = course.casualsMap.get(casualID);
+
+            // create new tutorial object
+            Tutorial t = new Tutorial(tutorialID, courseID, date, startTime, endTime, assignedCasual);
+
+            // add new tutorial object to tutorials hashmap
+            tutorialsMap.put(t.getTutorialID(), t);
+
+            course.setNotApproved();
+        } else {
+            System.out.print("Error could not create new tutorial");
+        }
+
+    }
+
+    void removeTutorial(String tutorialID) {
+
+        if (tutorialsMap.containsKey(tutorialID)) {
+            tutorialsMap.remove(tutorialID);
+        }
+
+        course.setNotApproved();
+    }
+
+    public void listTutorials() {
+
+        if (tutorialsMap.isEmpty()) {
+            System.out.println("No Tutorial Data!\n");
+        }
+        // for each key in hash map retrieve the sale object
+        // and it's details
+        for (String key : tutorialsMap.keySet()) {
+            Tutorial s = tutorialsMap.get(key);
+            s.getTutorialDetails();
+        }
+
+    }
+
+}

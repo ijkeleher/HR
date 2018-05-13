@@ -4,14 +4,14 @@ public class TimeSheet {
     Tutorial tutorialID;
     int hrs;
     
-    public TimeSheet(Tutorial classID){
+    public TimeSheet(Tutorial tutorialID){
      
     }
     
     public void displayTimesheet(){
     //print class details
     System.out.println(tutorialID.tutorialID+"\n");
-    System.out.println(tutorialID.course+"\n");
+    System.out.println(tutorialID.courseID+"\n");
     System.out.println(tutorialID.startTime+"\n");
     System.out.println(tutorialID.endTime+"\n");
     System.out.println(tutorialID.casual+"\n");
