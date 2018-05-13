@@ -8,6 +8,9 @@ public class Course {
    String courseID;
    CourseCoordinator courseCoordinator;
    HashMap<String, Casual> casualsMap;
+   public Timetable timetable;
+   boolean isApproved = false;
+   
    
    static Scanner console = new Scanner(System.in);
    
@@ -15,20 +18,21 @@ public class Course {
        
    }
    
-   
-   public void listCasuals(){
-           
-           if (casualsMap.isEmpty()){
-               System.out.println("NoCasuals assigned for teaching in this course!\n");
-           }
-           // for each key in hash map retrieve the casual object
-           //and it's details
-           for (Object key : casualsMap.keySet()) {
-               Casual c = (Casual) casualsMap.get(key);
-               System.out.println(c.name+" - "+c.employeeNum+"\n");
-           }
-       
+   void importListOfCasuals(){
+       //import list of casuals from text database
    }
+   
+   
+   public void setIsApproved(){
+       isApproved = true;
+   }
+   
+   public void setNotApproved(){
+       isApproved = false;
+   }
+   
+   
+
        }
    
    

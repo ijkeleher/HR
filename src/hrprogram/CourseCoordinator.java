@@ -7,8 +7,4 @@ public class CourseCoordinator extends User{
         // TODO Auto-generated constructor stub
     }
 
-    void requestCasual(){
-        
-    }
-
 }
