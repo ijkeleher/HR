@@ -2,25 +2,37 @@ package hrprogram;
 
 public class UserInterface {
     
-    void viewTimetable(){
+    void viewTimetable(Course course){
         
-        //timetable has a listTutorials method
+        course.timetable.listTutorials();
         
-    }
-    
-    void viewTimeSheet(){
-        
-        //timesheet has a displayTimesheet method you can use here
+        //timetable object has a tutorialsMap containing all tutorial objects which have getTutorialDetails method
+        //you can also fetch the tutorial name if you need it using getTutorialID()
         
     }
     
-    void viewListOfCasuals(){
+    void viewTimeSheet(TimeSheet timesheet){
         
-        //course has a listCasuals method you can use here
+        timesheet.displayTimesheet();
         
     }
     
-    void viewReport(){
+    void viewListOfCasuals(Course course){
+        
+        course.listCasuals();
+        
+    }
+    
+    void viewReport(Report report){
+        
+        report.listCasuals();
+        
+        report.CalculateTotalHours();
+        
+        report.calculateTotalCost(); 
+        
+        //calculateEstimatedBudget method requires input form the user
+        //report.calculateEstimatedBudget(estimatedNumberOfTutorials, estimatedDuration, estimatedHrlyRate)
         
         //report has listCasuals, calculatetotalCost and CalculateEstimatedBudget methods
         
