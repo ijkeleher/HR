@@ -85,6 +85,20 @@ public class Timetable {
         }
 
     }
+    
+    void setCasual(String tutorialID, String newCasual){
+    	
+    	 if (tutorialsMap.containsKey(tutorialID)) {
+             Tutorial t = tutorialsMap.get(tutorialID);
+             
+             if (course.casualsMap.containsKey(newCasual)) {
+             Casual c = course.casualsMap.get(newCasual);
+             	t.casual = c;
+    		 
+             }
+    	 }
+    	
+    }
 
     void removeTutorial(String tutorialID) {
 
