@@ -10,5 +10,5 @@ Dhiraj
 -Driver: Selena and Dhiraj
 
 -UI, User classes and subclasses, Course, Timetable, Tutorial and Timesheet: Inci and Shuoyu
-selena is the best!!!!
+
 At least 1 method created by each member.
