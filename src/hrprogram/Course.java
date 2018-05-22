@@ -10,7 +10,6 @@ public class Course {
     String courseID;
     CourseCoordinator courseCoordinator;
     HashMap<String, Casual> casualsMap;
-    public Timetable timetable;
     boolean isApproved = false;
 
     static Scanner console = new Scanner(System.in);
@@ -27,7 +26,7 @@ public class Course {
             targetFile.useDelimiter("#");
             System.out.println("Casuals file found! Using backup file for loading data!");
 
-            try {
+/*            try {
                 // if file has no content throw "file empty" exception
                 if (targetFile.hasNextLine() == false) {
                     throw new Exception("File is empty!");
@@ -50,7 +49,7 @@ public class Course {
                 System.out.println(e.getMessage());
             } finally {
                 targetFile.close();
-            }
+            } */
         } catch (
 
         FileNotFoundException e) {

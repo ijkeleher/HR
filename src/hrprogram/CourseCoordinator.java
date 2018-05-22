@@ -2,9 +2,18 @@ package hrprogram;
 
 public class CourseCoordinator extends User{
     
-    public CourseCoordinator(String name, String employeeNum) {
-        super(employeeNum, name);
-        // TODO Auto-generated constructor stub
+	private String employeeNum;
+	private String name;
+	private String email;
+	private String phone; 
+	
+    public CourseCoordinator(String userName, String password, String employeeNum, String name, String email, String phone) {
+        super(userName, password, employeeNum);
+        
     }
 
+    public String getName(){
+    	return name; 
+    }
+   
 }

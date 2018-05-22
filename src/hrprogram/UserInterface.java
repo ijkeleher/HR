@@ -1,29 +1,41 @@
 package hrprogram;
 
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class UserInterface {
     
-    void viewTimetable(Course course){
+    public static void viewTimetable(Timetable timetable){
         
-        course.timetable.listTutorials();
+        timetable.listTutorials();
+    }
+   
+    /*public static void mainMenu(){
+    	  
+    	  
+
+      }*/
+        
+        //driver to ui and then back to driver for menus
         
         //timetable object has a tutorialsMap containing all tutorial objects which have getTutorialDetails method
         //you can also fetch the tutorial name if you need it using getTutorialID()
         
-    }
     
-    void viewTimeSheet(TimeSheet timesheet){
+    
+    static void viewTimeSheet(TimeSheet timesheet){
         
         timesheet.displayTimesheet();
         
     }
     
-    void viewListOfCasuals(Course course){
+    static void viewListOfCasuals(Course course){
         
         course.listCasuals();
         
     }
     
-    void viewReport(Report report){
+    static void viewReport(Report report){
         
         report.listCasuals();
         
