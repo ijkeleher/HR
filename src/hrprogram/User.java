@@ -1,5 +1,7 @@
 package hrprogram;
 
+//import org.omg.CORBA.ARG_IN;
+
 public class User {
 
     // login info
@@ -7,16 +9,18 @@ public class User {
     private String password;
 
     // personal info
-    //private String email;
-    //private String name;
     private String employeeNum;
-    //private  int phone;
+    private String userType; 
 
     public User(){
     	
     }
-    public User(String username, String password, String employeeNum) {
-
+    public User(String args_username, String args_password, String args_employeeNum, String args_userType) {
+    	username = args_username;
+    	password = args_password;
+    	employeeNum = args_employeeNum; 
+    	userType = args_userType; 
+    	System.out.println("here in User()");
     }
 
     // getter methods 
@@ -42,6 +46,13 @@ public class User {
 
     }
     
+    public void setEmployeeNum(String args_empno){
+        employeeNum = args_empno; 
+    }
+    
+    public String getUserType(){
+    	return userType;
+    }
 
 
 }
