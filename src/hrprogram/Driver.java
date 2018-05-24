@@ -18,6 +18,8 @@ public class Driver {
 
 	static ArrayList<User> userInfoArray = new ArrayList<User>();
 	static ArrayList<User> loginArray = new ArrayList<User>();
+	static ArrayList<Course> courseInfoArray = new ArrayList<Course>();
+	static ArrayList<TimeSlot> timeSlotArray = new ArrayList<TimeSlot>();
 	static String loginUserType;
 
 	public Driver() {
@@ -27,7 +29,9 @@ public class Driver {
 	public static void main(String[] args) {
 
 		loginUserType = null;
-		load();
+		loadUser();
+		loadCourse();
+		loadTimeSlot();
 		login();
 		Driver d = new Driver();
 
@@ -64,7 +68,7 @@ public class Driver {
 	}// end of psvm()
 
 	// load values from the txt file
-	private static void load() {
+	private static void loadUser() {
 		Scanner inputStream = null; // create object variable
 
 		try { // create Scanner object & assign to variable
@@ -122,6 +126,73 @@ public class Driver {
 		inputStream.close();
 	} // end of load()
 
+	// load values from the txt file
+	private static void loadCourse() {
+		Scanner inputStreamC = null; // create object variable for Course
+
+		try { // create Scanner object & assign to variable
+			inputStreamC = new Scanner(new File("course.txt"));
+			inputStreamC.useDelimiter(",");
+		} catch (FileNotFoundException e) {
+			System.out.println("No Course Infomation was Loaded");
+			// System.exit(0);
+			return;
+		}
+
+		try {
+			while (inputStreamC.hasNext()) {
+
+				String readCourseID = inputStreamC.next();
+				String readCourseName = inputStreamC.next();
+				String readCourseUserName = inputStreamC.next();
+				
+				Course c1 = new Course(readCourseID, readCourseName, readCourseUserName);
+				courseInfoArray.add(c1);
+				System.out.println("Read a Course " + c1.getCourseID() + " " + c1.getCourseName() + " "	+ c1.getCoordinatorUserID());
+				
+			} //eo while
+		}  catch (IllegalStateException e) {
+			System.err.println("Could not read from the file");
+		} catch (InputMismatchException e) {
+			System.err.println("Something wrong happened while reading the file");
+		}
+		inputStreamC.close();
+	} //eo loadCourse()
+	
+	// load values from the txt file
+	private static void loadTimeSlot() {
+		Scanner inputStreamT = null; // create object variable for Course
+
+		try { // create Scanner object & assign to variable
+			inputStreamT = new Scanner(new File("timeslot.txt"));
+			inputStreamT.useDelimiter(",");
+		} catch (FileNotFoundException e) {
+			System.out.println("No time slot infomation was Loaded");
+			// System.exit(0);
+			return;
+		}
+
+		try {
+			while (inputStreamT.hasNext()) {
+
+				String readTimeSlotID = inputStreamT.next();
+				String readTimePeriodID = inputStreamT.next();
+				String readCourseID = inputStreamT.next();
+				String readCasualUser = inputStreamT.next();
+				
+				TimeSlot t1 = new TimeSlot(readTimeSlotID, readCourseID, readTimePeriodID, readCasualUser);
+				timeSlotArray.add(t1);
+				t1.getTimeSlotDetails();
+				
+			} //eo while
+		}  catch (IllegalStateException e) {
+			System.err.println("Could not read from the file");
+		} catch (InputMismatchException e) {
+			System.err.println("Something wrong happened while reading the file");
+		}
+		inputStreamT.close();
+	} //eo loadCourse()
+	
 	private static void login() {
 
 		Scanner inputUserName = new Scanner(System.in);
@@ -159,6 +230,7 @@ public class Driver {
 
 	} //end of login()
 
+	
 	public static void menuAdmin() {
 		System.out.println("Add a new user        	1" + "\n");
 		System.out.println("Delete a user  	    	2" + "\n");
@@ -198,20 +270,21 @@ public class Driver {
 			break;
 		case "3":
 			System.out.println("Add a Time Slot");
-			//d.deleteUser();
+			d.displayTimeSlot();
 			break;
 		case "4":
 			System.out.println("Delete a existing Time Slot");
-			// u.addAccounts();
+			// d.addAccounts();
 			break;
 		case "5":
 			System.out.println("View Reports");
-			// u.addAccounts();
+			// d.addAccounts();
 			break;
 		case "X":
 		case "x":
 			try {
-				fileWriting();
+				userFileWriting();
+				courseFileWriting();
 				System.out.println("Save and Exit");
 			} catch (FileNotFoundException fe) {
 				// throw OfferException("File Not Found");
@@ -225,7 +298,7 @@ public class Driver {
 		switch (enteredValue) {
 		case "1":
 			System.out.println("Add New Course");
-			//d.addUser();
+			d.addCourse();
 			break;
 		case "2":
 			System.out.println("Delete an existing Course");
@@ -241,12 +314,13 @@ public class Driver {
 			break;
 		case "5":
 			System.out.println("View Time Table");
-			// u.addAccounts();
+			// d.addAccounts();
 			break;
 		case "X":
 		case "x":
 			try {
-				fileWriting();
+				userFileWriting();
+				courseFileWriting();
 				System.out.println("Save and Exit");
 			} catch (FileNotFoundException fe) {
 				// throw OfferException("File Not Found");
@@ -264,12 +338,13 @@ public class Driver {
 			break;
 		case "2":
 			System.out.println("View Time Table");
-			// u.addAccounts();
+			// d.addAccounts();
 			break;
 		case "X":
 		case "x":
 			try {
-				fileWriting();
+				userFileWriting();
+				courseFileWriting();
 				System.out.println("Save and Exit");
 			} catch (FileNotFoundException fe) {
 				// throw OfferException("File Not Found");
@@ -287,7 +362,7 @@ public class Driver {
 			break;
 		case "2":
 			System.out.println("Apply for timeslots");
-			// u.addAccounts();
+			// d.applyForTimeSlot();
 			break;
 		case "3":
 			System.out.println("View pay ");
@@ -296,7 +371,8 @@ public class Driver {
 		case "X":
 		case "x":
 			try {
-				fileWriting();
+				userFileWriting();
+				courseFileWriting();
 				System.out.println("Save and Exit");
 			} catch (FileNotFoundException fe) {
 				// throw OfferException("File Not Found");
@@ -317,7 +393,29 @@ public class Driver {
 		return null;
 	}
 	
-	public static void fileWriting() throws FileNotFoundException {
+	public static void courseFileWriting() throws FileNotFoundException {
+
+		String filename = "course.txt"; // path & filename
+		PrintWriter outputStream = null;
+
+		try {
+			// create a new object of the printWriter class & assign to the
+			outputStream = new PrintWriter(new FileOutputStream(filename));
+
+			for (Course course : courseInfoArray) {
+				outputStream.println();
+				outputStream.print(course.getCourseID().toUpperCase() + ",");
+				outputStream.print(course.getCourseName().toUpperCase() + ",");
+				outputStream.print(course.getCoordinatorUserID().toUpperCase());
+			}
+		} catch (FileNotFoundException e) {
+			// display the inbuilt error message belonging to e object
+			System.out.println(e);
+		} // end try catch
+		outputStream.close(); // close the stream
+	}
+	
+	public static void userFileWriting() throws FileNotFoundException {
 		String filename = "user.txt"; // path & filename
 		PrintWriter outputStream = null;
 
@@ -487,6 +585,87 @@ public class Driver {
 
 	} // end of deleteUser()
 
+	
+	public void displayTimeSlot(){
+		
+	} // end of displayTimeSlot()
+	
+	public void addCourse(){
+		
+		Scanner inputCourseID = new Scanner(System.in);
+		Scanner inputCourseName = new Scanner(System.in);
+		Scanner inputCourseCoordinator = new Scanner(System.in);
+		Scanner inputCasual = new Scanner(System.in);
+
+		String entValue_courseID = null;
+		String entValue_courseName = null;
+		String entValue_ccempNo = null;//course cordinator employee number
+		String entValue_caempNo = null;//casual employee number
+		
+		
+		System.out.println("Enter CourseID: ");
+		entValue_courseID = inputCourseID.nextLine().toUpperCase();
+		
+		if (entValue_courseID.isEmpty()) {
+			System.out.println("\nNothing was entered for the UserName, Please try again.");
+			entValue_courseID = inputCourseID.nextLine().toUpperCase();
+		}
+
+		// check for username duplicity
+		if (!(entValue_courseID.isEmpty()) && !(courseIDDuplicate(entValue_courseID.toUpperCase()))) {
+
+			System.out.println("Enter the course name: ");
+			entValue_courseName = inputCourseName.nextLine();
+			
+			System.out.println("Enter course coordinator employee number: ");
+			entValue_ccempNo = inputCourseCoordinator.nextLine();
+			
+			if (entValue_ccempNo.isEmpty()) {
+				System.out.println("\nNothing was entered for the coordinator username, Please try again.");
+				entValue_ccempNo = inputCourseCoordinator.nextLine();
+			}
+			
+			if (!(entValue_ccempNo.isEmpty()) && (userNameDuplicate(entValue_ccempNo.toUpperCase()))) {
+				
+				Course c1 = new Course(entValue_courseID, entValue_courseName, entValue_ccempNo);
+				//add the obj to the array
+				courseInfoArray.add(c1);
+				System.out.println("New Course Added " + entValue_courseName);
+				
+			} else {
+				System.out.println("Incorrect employee number!!");
+			}
+
+		} else {
+			System.out.println("Invalid courseID");
+		}
+	} // end of addCourse()
+	
+	
+	public void applyForTimeSlot(){
+		
+		//list the time slots
+		Scanner inputTimeSlotID = new Scanner(System.in);
+		String entValue_timeSlotID = null;
+		
+		System.out.println("Enter ID: ");
+		entValue_timeSlotID = inputTimeSlotID.nextLine().toUpperCase();
+		
+		if (entValue_timeSlotID.isEmpty()) {
+			System.out.println("\nNothing was entered for the timeslot, Please try again.");
+			entValue_timeSlotID = inputTimeSlotID.nextLine().toUpperCase();
+		}
+
+		// check for username duplicity
+		if (!(entValue_timeSlotID.isEmpty()) && (timeSlotDuplicate(entValue_timeSlotID.toUpperCase()))) {
+			
+		} else {
+			System.out.println("Invalid timeslot");
+		}
+
+	}//end of apply for timeslot method
+	
+	
 	// check for User Type
 	public String userTypeValidation(String arg_userType) {
 		String userType = null;
@@ -515,6 +694,24 @@ public class Driver {
 		return userType;
 	}
 
+	public static boolean timeSlotDuplicate(String arg_timeSlotID) {
+
+		boolean timeSlotFound = false;
+
+		for (TimeSlot t : timeSlotArray) {
+			String currenttimeSlotID = t.getTimeSlotID();
+			if (arg_timeSlotID.toUpperCase().trim().equals(currenttimeSlotID.toUpperCase().trim())) {
+				timeSlotFound = true;
+				break;
+
+			} else {
+				timeSlotFound = false;
+			}
+
+		}
+		return timeSlotFound;
+	}
+	
 	// checks if the username exists in the arraylist
 	public static boolean userNameDuplicate(String arg_username) {
 
@@ -534,6 +731,27 @@ public class Driver {
 		return userNameFound;
 	}
 
+	// checks if the username exists in the arraylist
+	public static boolean courseIDDuplicate(String arg_courseID) {
+
+		boolean courseIDFound = false;
+
+		for (Course c : courseInfoArray) /*need to make course Array*/{
+			String currentCourseID = c.getCourseID();
+
+			System.out.println("Current Course ID " + currentCourseID + "& Arg Course ID " + arg_courseID) ;
+			if (arg_courseID.toUpperCase().trim().equals(currentCourseID.toUpperCase().trim())) {
+				courseIDFound = true;
+				break;
+
+			} else {
+				courseIDFound = false;
+			}
+
+		}
+		return courseIDFound;
+	}
+	
 	public static boolean userNameDelete(String arg_username) {
 
 		boolean userNameDeleted = false;

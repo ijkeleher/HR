@@ -8,17 +8,35 @@ import java.util.Scanner;
 public class Course {
 
     String courseID;
-    CourseCoordinator courseCoordinator;
-    HashMap<String, Casual> casualsMap;
-    boolean isApproved = false;
+    String courseName;
+    String coordinatorUserID;
 
-    static Scanner console = new Scanner(System.in);
+    static Scanner console = new Scanner(System.in);   
+    
+    public Course(String courseID, String courseName, String coordinatorUserID) {
+		//super();
+		this.courseID = courseID;
+		this.courseName = courseName;
+		this.coordinatorUserID = coordinatorUserID;
+	}
 
-    public Course(String courseID) {
-        this.courseID = courseID;
+	public String getCourseID(){
+    	return courseID;
     }
+	
+	public String getCourseName(){
+		return courseName;
+	}
+    
+    public String getCoordinatorUserID() {
+		return coordinatorUserID;
+	}
 
-    void importListOfCasuals() {
+	public void setCoordinatorEmpID(String coordinatorUserID) {
+		this.coordinatorUserID = coordinatorUserID;
+	}
+
+	void importListOfCasuals() {
 
         try {// finding the file and setting up scanner to read it
             String filename = "casuals.txt";
@@ -58,7 +76,7 @@ public class Course {
         }
 
     }// end of method
-
+/*
 public void listCasuals(){
         
         if (casualsMap.isEmpty()){
@@ -79,5 +97,6 @@ public void listCasuals(){
     public void setNotApproved() {
         isApproved = false;
     }
+    */
 
 }

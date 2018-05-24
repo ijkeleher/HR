@@ -28,16 +28,17 @@ public class UserInterface {
         timesheet.displayTimesheet();
         
     }
-    
+  
+    /*
     static void viewListOfCasuals(Course course){
         
         course.listCasuals();
         
     }
-    
+    */
     static void viewReport(Report report){
         
-        report.listCasuals();
+     //   report.listCasuals();
         
         report.CalculateTotalHours();
         

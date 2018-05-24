@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Timetable {
     Course course;
     CourseCoordinator courseCoordinator;
-    HashMap<String, Tutorial> tutorialsMap;
+    HashMap<String, TimeSlot> tutorialsMap;
 
     public Timetable(Course course, CourseCoordinator courseCoordinator) {
 
@@ -28,29 +28,26 @@ public class Timetable {
                     throw new Exception("File is empty!");
 
                 } else {// grab info from file if available
-
                     while (targetFile.hasNextLine()) {
                         String tutorialID = targetFile.next();
                         String courseID = targetFile.next();
                         String date = targetFile.next();
-                        String startTime = targetFile.next();
-                        String endTime = targetFile.next();
+                        String timePeriod = targetFile.next();
                         String casualID = targetFile.next();
                         int duration = targetFile.nextInt();
 
-                        if (course.casualsMap.containsKey(casualID)) {
-                            Casual assignedCasual = course.casualsMap.get(casualID);
+                    //    if (course.casualsMap.containsKey(casualID)) {
+                       //     Casual assignedCasual = course.casualsMap.get(casualID);
 
-                            Tutorial t = new Tutorial(tutorialID, courseID, date, 
-                                    startTime, endTime, assignedCasual, duration);
+                      //      TimeSlot t = new TimeSlot(tutorialID, courseID, date, 
+                      //              timePeriod, assignedCasual, duration);
 
-                            tutorialsMap.put(t.getTutorialID(), t);
+                     //       tutorialsMap.put(t.getTimeSlotID(), t);
                         }
                     } // end of while loop
 
-                } // end of if else
-                  // exception to print print file empty message if file is
-                  // empty
+            //    } // end of if else
+     // exception to print print file empty message if file is empty
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             } finally {
@@ -64,32 +61,32 @@ public class Timetable {
         }
 
     }// end of method
-
-    void createTutorial(String tutorialID, String courseID, String date, String startTime, String endTime,
+/*
+    void createTutorial(String tutorialID, String courseID, String date, String timePeriod,
             String casualID, int duration) {
 
         // search for casual in database
-        if (course.casualsMap.containsKey(casualID)) {
-            Casual assignedCasual = course.casualsMap.get(casualID);
+      //  if (course.casualsMap.containsKey(casualID)) {
+        //    Casual assignedCasual = course.casualsMap.get(casualID);
 
             // create new tutorial object
-            Tutorial t = new Tutorial(tutorialID, courseID, date, 
-                    startTime, endTime, assignedCasual, duration);
+            TimeSlot t = new TimeSlot(tutorialID, courseID, date, 
+         //           timePeriod, assignedCasual, duration);
 
             // add new tutorial object to tutorials hashmap
-            tutorialsMap.put(t.getTutorialID(), t);
+            tutorialsMap.put(t.getTimeSlotID(), t);
 
             course.setNotApproved();
         } else {
             System.out.print("Error could not create new tutorial");
         }
 
-    }
+    }*/
     
-    void setCasual(String tutorialID, String newCasual){
+  /*  void setCasual(String tutorialID, String newCasual){
     	
     	 if (tutorialsMap.containsKey(tutorialID)) {
-             Tutorial t = tutorialsMap.get(tutorialID);
+             TimeSlot t = tutorialsMap.get(tutorialID);
              
              if (course.casualsMap.containsKey(newCasual)) {
              Casual c = course.casualsMap.get(newCasual);
@@ -98,7 +95,7 @@ public class Timetable {
              }
     	 }
     	
-    }
+    }*/
 
     void removeTutorial(String tutorialID) {
 
@@ -106,7 +103,7 @@ public class Timetable {
             tutorialsMap.remove(tutorialID);
         }
 
-        course.setNotApproved();
+     //   course.setNotApproved();
     }
 
     public void listTutorials() {
@@ -117,8 +114,8 @@ public class Timetable {
         // for each key in hash map retrieve the sale object
         // and it's details
         for (String key : tutorialsMap.keySet()) {
-            Tutorial s = tutorialsMap.get(key);
-            s.getTutorialDetails();
+            TimeSlot s = tutorialsMap.get(key);
+            s.getTimeSlotDetails();
         }
 
     }

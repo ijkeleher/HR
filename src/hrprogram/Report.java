@@ -14,14 +14,14 @@ public class Report {
     public Report(Course course){
         this.course = course;
         this.courseID = course.courseID;
-        this.courseCoordinator = course.courseCoordinator.getName();
+        //this.courseCoordinator = course.courseCoordinator.
     }
 
-    
+  /*  
    void listCasuals(){
        
        course.listCasuals();
-   }
+   }*/
 
    void CalculateTotalHours(){
        

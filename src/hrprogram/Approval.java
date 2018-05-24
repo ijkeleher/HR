@@ -29,9 +29,9 @@ public class Approval extends User{
     	return phone; 
     }
     
-
+/*
     void setIsApproved(Course course){
        course.setIsApproved();
     
-}
+}*/
 }
