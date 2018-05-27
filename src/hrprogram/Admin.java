@@ -10,7 +10,7 @@ public class Admin extends User{
     public Admin(String args_userName, String args_password, String args_employeeNum, String args_name, String args_email, String args_phone) {
 
     	super(args_userName, args_password, args_employeeNum,"AD");
-        System.out.println("here in Admin");        
+        //System.out.println("here in Admin");        
         name = args_name;
         email = args_email; 
         phone = args_phone; 

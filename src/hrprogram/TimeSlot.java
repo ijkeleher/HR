@@ -25,7 +25,7 @@ public class TimeSlot {
     
 	public void getTimeSlotDetails() {
         // TODO Auto-generated method stub
-        System.out.printf("%s\n, %s\n, %s\n, %s\n",
+        System.out.printf("%s, %s, %s, %s",
         		timeSlotID, timePeriod, courseID,casualUser);
     }
     

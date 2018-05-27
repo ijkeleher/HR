@@ -9,7 +9,7 @@ public class Approval extends User{
 	
     public Approval(String userName, String password, String employeeNum, String args_name, String args_email, String args_phone) {
         super(userName, password, employeeNum,"AP");
-        System.out.println("here in Approval");        
+        //System.out.println("here in Approval");        
         name = args_name;
         email = args_email; 
         phone = args_phone; 

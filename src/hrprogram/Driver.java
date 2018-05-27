@@ -95,27 +95,23 @@ public class Driver {
 					Admin a1 = new Admin(readUserName, readPassword, readEmployeeNumber, readName, readPhone,
 							readEmail);
 					userInfoArray.add(a1);
-					System.out.println("Read an Admin User: " + ((User) a1).getUserName() + " " + a1.getPassword() + " "
-							+ a1.getEmployeeNum());
+					//System.out.println("Read an Admin User: " + ((User) a1).getUserName() + " " + a1.getPassword() + " "+ a1.getEmployeeNum());
 				} else if (instanceOf.contains("*CC*")) {
 					CourseCoordinator a1 = new CourseCoordinator(readUserName, readPassword, readEmployeeNumber,
 							readName, readPhone, readEmail);
 					userInfoArray.add(a1);
-					System.out.println("Read an CC User: " + ((User) a1).getUserName() + " " + a1.getPassword() + " "
-							+ a1.getEmployeeNum());
+					//System.out.println("Read an CC User: " + ((User) a1).getUserName() + " " + a1.getPassword() + " "+ a1.getEmployeeNum());
 				} else if (instanceOf.contains("*AP*")) {
 					Approval a1 = new Approval(readUserName, readPassword, readEmployeeNumber, readName, readPhone,
 							readEmail);
 					userInfoArray.add(a1);
-					System.out.println("Read an Approval User: " + ((User) a1).getUserName() + " " + a1.getPassword()
-							+ " " + a1.getEmployeeNum());
+					//System.out.println("Read an Approval User: " + ((User) a1).getUserName() + " " + a1.getPassword()+ " " + a1.getEmployeeNum());
 				} else if (instanceOf.contains("*CA*")) {
 					Casual a1 = new Casual(readUserName, readPassword, readEmployeeNumber, readName, readPhone,
 							readEmail);
 					a1.setHrly_rate(inputStream.nextInt());
 					userInfoArray.add(a1);
-					System.out.println("Read an Casual User: " + ((User) a1).getUserName() + " " + a1.getPassword()
-							+ " " + a1.getEmployeeNum());
+					//System.out.println("Read an Casual User: " + ((User) a1).getUserName() + " " + a1.getPassword()+ " " + a1.getEmployeeNum());
 				}
 			}
 		} catch (IllegalStateException e) {
@@ -148,7 +144,7 @@ public class Driver {
 				
 				Course c1 = new Course(readCourseID, readCourseName, readCourseUserName);
 				courseInfoArray.add(c1);
-				System.out.println("Read a Course " + c1.getCourseID() + " " + c1.getCourseName() + " "	+ c1.getCoordinatorUserID());
+				//System.out.println("Read a Course " + c1.getCourseID() + " " + c1.getCourseName() + " "	+ c1.getCoordinatorUserID());
 				
 			} //eo while
 		}  catch (IllegalStateException e) {
@@ -182,7 +178,7 @@ public class Driver {
 				
 				TimeSlot t1 = new TimeSlot(readTimeSlotID, readCourseID, readTimePeriodID, readCasualUser);
 				timeSlotArray.add(t1);
-				t1.getTimeSlotDetails();
+				//t1.getTimeSlotDetails();
 				
 			} //eo while
 		}  catch (IllegalStateException e) {
@@ -233,27 +229,22 @@ public class Driver {
 	
 	public static void menuAdmin() {
 		System.out.println("Add a new user        	1" + "\n");
-		System.out.println("Delete a user  	    	2" + "\n");
-		System.out.println("Add a new time slot   	3" + "\n");
-		System.out.println("Delete time slot     	4" + "\n");
-		System.out.println("View Reports	        5" + "\n");
+		System.out.println("View Time Table	        2" + "\n");
+		System.out.println("View Time Slot  	   	3" + "\n");
 	}
 
 	public static void menuCourseCoordinator() {
 		System.out.println("Add a new course       	1" + "\n");
-		System.out.println("Delete a course  	   	2" + "\n");
-		System.out.println("Add a new time table   	3" + "\n");
-		System.out.println("Delete time table     	4" + "\n");
-		System.out.println("View Reports	        5" + "\n");
+		System.out.println("View Time Table	        2" + "\n");
 	}
 
 	public static void menuApproval() {
 		System.out.println("Approve Application    	1" + "\n");
-		System.out.println("View TimeTable	        2" + "\n");
+		System.out.println("View Time Table	        2" + "\n");
 	}
 
 	public static void menuCasual() {
-		System.out.println("View Timetable        	1" + "\n");
+		System.out.println("View Time Table        	1" + "\n");
 		System.out.println("Apply for course    	2" + "\n");
 		System.out.println("View Pay		        3" + "\n");
 	}
@@ -265,20 +256,12 @@ public class Driver {
 			d.addUser();
 			break;
 		case "2":
-			System.out.println("Delete an existing User");
-			d.deleteUser();
+			System.out.println("View Reports");
+			d.getTimeTable();
 			break;
 		case "3":
-			System.out.println("Add a Time Slot");
-			d.displayTimeSlot();
-			break;
-		case "4":
-			System.out.println("Delete a existing Time Slot");
-			// d.addAccounts();
-			break;
-		case "5":
 			System.out.println("View Reports");
-			// d.addAccounts();
+			d.displayTimeSlot();
 			break;
 		case "X":
 		case "x":
@@ -301,20 +284,8 @@ public class Driver {
 			d.addCourse();
 			break;
 		case "2":
-			System.out.println("Delete an existing Course");
-			//d.deleteUser();
-			break;
-		case "3":
-			System.out.println("Add a Time Table");
-			//d.deleteUser();
-			break;
-		case "4":
-			System.out.println("Delete a existing Time Table");
-			// u.addAccounts();
-			break;
-		case "5":
 			System.out.println("View Time Table");
-			// d.addAccounts();
+			d.getTimeTable();
 			break;
 		case "X":
 		case "x":
@@ -338,7 +309,7 @@ public class Driver {
 			break;
 		case "2":
 			System.out.println("View Time Table");
-			// d.addAccounts();
+			d.getTimeTable();
 			break;
 		case "X":
 		case "x":
@@ -358,7 +329,7 @@ public class Driver {
 		switch (enteredValue) {
 		case "1":
 			System.out.println("View Timetable");
-			//d.addUser();
+			d.getTimeTable();
 			break;
 		case "2":
 			System.out.println("Apply for timeslots");
@@ -406,7 +377,7 @@ public class Driver {
 				outputStream.println();
 				outputStream.print(course.getCourseID().toUpperCase() + ",");
 				outputStream.print(course.getCourseName().toUpperCase() + ",");
-				outputStream.print(course.getCoordinatorUserID().toUpperCase());
+				outputStream.print(course.getCoordinatorUserID().toUpperCase() + ",");
 			}
 		} catch (FileNotFoundException e) {
 			// display the inbuilt error message belonging to e object
@@ -587,8 +558,16 @@ public class Driver {
 
 	
 	public void displayTimeSlot(){
-		
+		TimeSheet tst = new TimeSheet();
+		tst.displayTimesheet(timeSlotArray,userInfoArray);
 	} // end of displayTimeSlot()
+	
+	public void getTimeTable(){
+		for (TimeSlot t : timeSlotArray) {
+			t.getTimeSlotDetails();
+		} 
+		System.out.println();
+	} //end of getTimeTable()
 	
 	public void addCourse(){
 		
@@ -781,36 +760,5 @@ public class Driver {
 		return null;
 	}
 
-	void modifyTimetable(Timetable timetable) {
-
-		// use the createClass, removeClass and listClass here to make timetable
-		// changes
-		// for each course
-
-	}
-
-	void createTimeSheet() {
-
-	}
-
-	void modifyTimesheet(TimeSheet timesheet) {
-
-	}
-
-	void deleteTimeSheet(TimeSheet timesheet) {
-
-	}
-
-	void createReport() {
-
-	}
-
-	void modifyReport(Report Report) {
-
-	}
-
-	void deleteReport(Report report) {
-
-	}
 
 }

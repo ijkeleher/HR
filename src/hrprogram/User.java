@@ -20,7 +20,7 @@ public class User {
     	password = args_password;
     	employeeNum = args_employeeNum; 
     	userType = args_userType; 
-    	System.out.println("here in User()");
+    	//System.out.println("here in User()");
     }
 
     // getter methods 
