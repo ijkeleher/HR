@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class TimeSheet {
 	TimeSlot timeSlotID;
-    int hrs;
     
-    public TimeSheet(){
+    public TimeSheet(TimeSlot timeSlotID){
+        this.timeSlotID = timeSlotID;
      
+    }
+    public TimeSheet(){     
     }
     
     public void displayTimesheet(ArrayList<TimeSlot> timeSlotArray,ArrayList<User> userInfoArray ){

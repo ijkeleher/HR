@@ -123,7 +123,7 @@ public class Driver {
 	} // end of load()
 
 	// load values from the txt file
-	private static void loadCourse() {
+	static void loadCourse() {
 		Scanner inputStreamC = null; // create object variable for Course
 
 		try { // create Scanner object & assign to variable
@@ -156,7 +156,7 @@ public class Driver {
 	} //eo loadCourse()
 	
 	// load values from the txt file
-	private static void loadTimeSlot() {
+	static void loadTimeSlot() {
 		Scanner inputStreamT = null; // create object variable for Course
 
 		try { // create Scanner object & assign to variable
