@@ -68,7 +68,7 @@ public class Driver {
 	}// end of psvm()
 
 	// load values from the txt file
-	private static void loadUser() {
+	static void loadUser() {
 		Scanner inputStream = null; // create object variable
 
 		try { // create Scanner object & assign to variable

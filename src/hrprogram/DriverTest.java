@@ -13,47 +13,36 @@ public class DriverTest {
     
     
     /*
-     * testing the report class takes input of object type "course"
-     *  and budget estimate method works
-     *  as a result of test we changed return value to double
-     *  By Inci
+     * Testing the user loading system.
+     * 
      */
     
     @Test
-    public void reportEstimateTest(){
-        Course c = new Course("ISYS888", "EXAMPLE COURSE", "DAVID");
-
-        Report r = new Report(c); 
+    public void userLoadingTest(){
+        Driver.loadUser();
         
-        double estimatetestValue = r.calculateEstimatedBudget(12, 2, 32.50);
-        assertEquals(estimatetestValue, 780.0, 0);
+
     }
     
     /*
      * testing that the error checking for loadCourse is working
-     * by Dhiraj
+     * 
+     *
      */ 
     
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void testloadCourseException() { 
        System.out.println("testing load course()");     
        Driver.loadCourse();    
     }
     
     /*
-     * public class TimeSheet {
-    TimeSlot timeSlotID;
-    int hrs = 2;
-    
-    public TimeSheet(TimeSlot timeSlotID){
-        this.timeSlotID = timeSlotID;
-        as a result of this test we had to fix the constructor
+     * testing displayTimeslot
      */ 
     @Test
     public void timeSheetTest(){
-        TimeSlot t = new TimeSlot("TSM1","10-12","COSC123","KAREN");
-        TimeSheet ts = new TimeSheet(t);
-        ts.displayTimesheet();
+        Driver d = new Driver();
+        d.displayTimeSlot();
     }
 
     /*
